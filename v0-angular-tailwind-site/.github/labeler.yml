@@ -1,0 +1,62 @@
+# Labeler configuration for automatic PR labeling
+
+# Documentation changes
+documentation:
+  - changed-files:
+      - any-glob-to-any-file:
+          - 'docs/**'
+          - '*.md'
+          - '.github/**'
+
+# Source code changes
+code:
+  - changed-files:
+      - any-glob-to-any-file:
+          - 'src/**'
+
+# Component changes
+components:
+  - changed-files:
+      - any-glob-to-any-file:
+          - 'src/app/components/**'
+
+# Page changes
+pages:
+  - changed-files:
+      - any-glob-to-any-file:
+          - 'src/app/pages/**'
+
+# Configuration changes
+config:
+  - changed-files:
+      - any-glob-to-any-file:
+          - 'angular.json'
+          - 'tsconfig*.json'
+          - 'tailwind.config.js'
+          - 'postcss.config.js'
+          - 'vercel.json'
+          - 'Dockerfile'
+          - 'docker-compose.yml'
+
+# Dependency changes
+dependencies:
+  - changed-files:
+      - any-glob-to-any-file:
+          - 'package.json'
+          - 'pnpm-lock.yaml'
+          - 'package-lock.json'
+
+# Docker changes
+docker:
+  - changed-files:
+      - any-glob-to-any-file:
+          - 'Dockerfile'
+          - 'docker-compose.yml'
+          - '.dockerignore'
+          - 'docs/DOCKER.md'
+
+# GitHub Actions changes
+ci:
+  - changed-files:
+      - any-glob-to-any-file:
+          - '.github/workflows/**'
