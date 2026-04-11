@@ -1,35 +1,137 @@
-# v0-angular-tailwind-site
+# Elite Fitness Coaching - Angular Website
 
-This is a [Next.js](https://nextjs.org) project bootstrapped with [v0](https://v0.app).
+A cinematic, modern fitness coaching website built with Angular 18, Tailwind CSS, and Taiga UI.
 
-## Built with v0
+## Features
 
-This repository is linked to a [v0](https://v0.app) project. You can continue developing by visiting the link below -- start new chats to make changes, and v0 will push commits directly to this repo. Every merge to `main` will automatically deploy.
+- Cinematic Black & Red color scheme
+- Smooth scroll animations
+- Fully responsive design
+- SEO optimized with meta tags
+- Rounded buttons throughout
+- Modern glass-morphism effects
+- Taiga UI components integration
+- Lazy-loaded routes for performance
 
-[Continue working on v0 →](https://v0.app/chat/projects/prj_B1yqX42NPAZ6PCt8TC3oHGbYK8su)
+## Tech Stack
+
+- **Angular 18** (Standalone Components)
+- **Tailwind CSS 3.4**
+- **Taiga UI 4.0**
+- **TypeScript 5.5**
+- **SCSS**
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
 
+- Node.js 18+ 
+- npm or pnpm
+
+### Installation
+
+1. Install dependencies:
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
+npm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. Start the development server:
+```bash
+npm start
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+3. Open your browser and navigate to `http://localhost:4200`
 
-## Learn More
+### Build for Production
 
-To learn more, take a look at the following resources:
+```bash
+npm run build
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-- [v0 Documentation](https://v0.app/docs) - learn about v0 and how to use it.
+The production build will be output to the `dist/fitness-coaching` directory.
 
-<a href="https://v0.app/chat/api/kiro/clone/mabroukoffers/v0-angular-tailwind-site" alt="Open in Kiro"><img src="https://pdgvvgmkdvyeydso.public.blob.vercel-storage.com/open%20in%20kiro.svg?sanitize=true" /></a>
+## Project Structure
+
+```
+src/
+├── app/
+│   ├── components/          # Shared components
+│   │   ├── header/
+│   │   ├── footer/
+│   │   ├── hero/
+│   │   ├── stats/
+│   │   ├── services-preview/
+│   │   ├── about-preview/
+│   │   ├── testimonials/
+│   │   └── cta-section/
+│   ├── pages/              # Route pages
+│   │   ├── home/
+│   │   ├── about/
+│   │   ├── services/
+│   │   └── contact/
+│   ├── app.component.ts
+│   └── app.routes.ts
+├── styles.scss             # Global styles
+├── index.html
+└── main.ts
+```
+
+## Customization
+
+### Colors
+
+Edit the color palette in `tailwind.config.js`:
+
+```js
+colors: {
+  primary: {
+    DEFAULT: '#DC2626',  // Your primary color
+    // ... other shades
+  },
+  dark: {
+    DEFAULT: '#0A0A0A',  // Background color
+    // ... other shades
+  }
+}
+```
+
+### Fonts
+
+The project uses:
+- **Bebas Neue** for headings
+- **Inter** for body text
+
+To change fonts, update:
+1. `src/index.html` - Google Fonts import
+2. `tailwind.config.js` - Font family configuration
+
+### Animations
+
+Custom animations are defined in `tailwind.config.js` under `extend.animation` and `extend.keyframes`.
+
+## Pages
+
+1. **Home** (`/`) - Hero, stats, services preview, about preview, testimonials, CTA
+2. **About** (`/about`) - Coach story, philosophy, certifications
+3. **Services** (`/services`) - Programs, comparison table, FAQ
+4. **Contact** (`/contact`) - Contact form, info, map placeholder
+
+## SEO
+
+The project includes:
+- Meta tags for description, keywords, author
+- Open Graph tags for social sharing
+- Twitter cards
+- Proper semantic HTML
+- Title service integration per route
+
+## Browser Support
+
+- Chrome (latest)
+- Firefox (latest)
+- Safari (latest)
+- Edge (latest)
+
+## License
+
+MIT License - feel free to use this for your own projects!
