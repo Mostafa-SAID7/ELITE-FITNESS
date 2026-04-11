@@ -2,10 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
-// Taiga UI imports
-@import '@taiga-ui/core/styles/taiga-ui-global';
-@import '@taiga-ui/core/styles/taiga-ui-local';
-@import '@taiga-ui/styles/taiga-ui-theme';
+// Taiga UI imports - commented out as they're not available in v4
+// @import '@taiga-ui/core/styles/taiga-ui-global';
+// @import '@taiga-ui/core/styles/taiga-ui-local';
+// @import '@taiga-ui/styles/taiga-ui-theme';
 
 // Custom CSS Variables
 :root {

@@ -1,8 +1,6 @@
 import { Component, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { TuiInputModule, TuiTextareaModule, TuiSelectModule } from '@taiga-ui/kit';
-import { TuiButton, TuiError } from '@taiga-ui/core';
 
 @Component({
   selector: 'app-contact',
@@ -10,12 +8,7 @@ import { TuiButton, TuiError } from '@taiga-ui/core';
   imports: [
     CommonModule, 
     FormsModule, 
-    ReactiveFormsModule,
-    TuiInputModule,
-    TuiTextareaModule,
-    TuiSelectModule,
-    TuiButton,
-    TuiError
+    ReactiveFormsModule
   ],
   template: `
     <div class="pt-20">

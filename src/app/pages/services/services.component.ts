@@ -288,7 +288,7 @@ export class ServicesComponent {
     { name: 'Transformation', popular: false }
   ];
 
-  comparisonFeatures = [
+  comparisonFeatures: Array<{ name: string; values: Record<string, boolean | string> }> = [
     { name: 'Custom Workout Plans', values: { 'Personal Training': true, 'Online Coaching': true, 'Nutrition Coaching': false, 'Transformation': true } },
     { name: 'In-Person Sessions', values: { 'Personal Training': true, 'Online Coaching': false, 'Nutrition Coaching': false, 'Transformation': true } },
     { name: 'Nutrition Guidance', values: { 'Personal Training': 'Basic', 'Online Coaching': 'Basic', 'Nutrition Coaching': true, 'Transformation': true } },

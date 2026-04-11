@@ -1,0 +1,35 @@
+<header class="fixed top-0 left-0 right-0 z-50 transition-all duration-500" [class.bg-dark/95]="isScrolled()">
+  <nav class="container-max mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between h-20">
+      <a routerLink="/" class="flex items-center gap-3 group">
+        <div class="w-12 h-12 rounded-full bg-primary-600 flex items-center justify-center">
+          <span class="font-display text-2xl text-white">E</span>
+        </div>
+        <span class="font-display text-2xl tracking-wider hidden sm:block">ELITE FITNESS</span>
+      </a>
+      <div class="hidden lg:flex items-center gap-8">
+        <a *ngFor="let link of navLinks" [routerLink]="link.path" routerLinkActive="text-primary-500" class="text-white/80 hover:text-primary-500">
+          {{ link.label }}
+        </a>
+      </div>
+      <div class="hidden lg:block">
+        <a routerLink="/contact" class="btn-primary inline-block">Start Your Journey</a>
+      </div>
+      <div class="lg:hidden w-12 h-12 rounded-full bg-white/10 flex items-center justify-center cursor-pointer" (click)="toggleMobileMenu()">
+        <div class="w-6 h-5 relative flex flex-col justify-between">
+          <span class="w-full h-0.5 bg-white" [class.rotate-45]="isMobileMenuOpen()"></span>
+          <span class="w-full h-0.5 bg-white" [class.opacity-0]="isMobileMenuOpen()"></span>
+          <span class="w-full h-0.5 bg-white" [class.-rotate-45]="isMobileMenuOpen()"></span>
+        </div>
+      </div>
+    </div>
+  </nav>
+  <div class="lg:hidden absolute top-full left-0 right-0 bg-dark/98 overflow-hidden" [class.max-h-0]="!isMobileMenuOpen()" [class.max-h-96]="isMobileMenuOpen()">
+    <div class="container-max mx-auto px-4 py-6 flex flex-col gap-4">
+      <a *ngFor="let link of navLinks" [routerLink]="link.path" routerLinkActive="text-primary-500" class="text-lg text-white/80 hover:text-primary-500 py-2" (click)="closeMobileMenu()">
+        {{ link.label }}
+      </a>
+      <a routerLink="/contact" class="btn-primary text-center mt-4" (click)="closeMobileMenu()">Start Your Journey</a>
+    </div>
+  </div>
+</header>
