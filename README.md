@@ -100,14 +100,23 @@ src/
 
 ## 🚢 Deployment
 
-### Vercel (Recommended)
-1. Push to GitHub
-2. Connect repository to Vercel
-3. Automatic deployment on push to main branch
+### Automatic Deployment to Vercel
+
+The app is automatically deployed to Vercel on every push to the main branch using Vercel's native GitHub integration.
+
+**Live App:** https://elite-fitness-drab.vercel.app
 
 ### Manual Deployment
-1. Build: `pnpm run build`
-2. Deploy `dist/fitness-coaching` folder to your hosting service
+
+```bash
+# Install Vercel CLI
+npm install -g vercel
+
+# Deploy to production
+vercel --prod
+```
+
+For detailed deployment instructions, see [Deployment Guide](./docs/DEPLOYMENT.md)
 
 ## 🔧 Technologies
 
