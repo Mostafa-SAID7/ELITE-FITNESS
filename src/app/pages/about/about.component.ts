@@ -10,7 +10,7 @@ import { aboutPageData } from '../../data/about-page.data';
   template: `
     <div class="pt-20">
       <!-- Hero Section -->
-      <section class="section-padding bg-dark relative overflow-hidden">
+      <section class="section-padding bg-black relative overflow-hidden">
         <div class="absolute inset-0">
           <div class="absolute top-0 right-0 w-96 h-96 bg-primary-600/10 rounded-full blur-3xl"></div>
           <div class="absolute bottom-0 left-0 w-96 h-96 bg-primary-600/5 rounded-full blur-3xl"></div>
@@ -21,29 +21,25 @@ import { aboutPageData } from '../../data/about-page.data';
             <!-- Content -->
             <div>
               <span class="inline-block text-primary-500 text-sm font-semibold tracking-wider uppercase mb-4">
-                About Me
+                {{ pageData.hero.badge }}
               </span>
               <h1 class="font-display text-5xl sm:text-6xl md:text-7xl mb-6">
-                THE MAN BEHIND 
-                <span class="text-gradient">THE MISSION</span>
+                {{ pageData.hero.title.line1 }}
+                <span class="text-gradient">{{ pageData.hero.title.line2 }}</span>
               </h1>
               <p class="text-white/70 text-lg leading-relaxed mb-6">
-                My name is Alex Rivera, and for over a decade, I have dedicated my life to helping others 
-                unlock their physical and mental potential. What started as a personal transformation has 
-                evolved into a mission to change lives through fitness.
+                {{ pageData.hero.description1 }}
               </p>
               <p class="text-white/70 text-lg leading-relaxed mb-8">
-                I believe that everyone has untapped potential waiting to be unleashed. My role is to be 
-                your guide, your motivator, and your biggest supporter on this journey to becoming the 
-                best version of yourself.
+                {{ pageData.hero.description2 }}
               </p>
 
               <div class="flex flex-wrap gap-4">
-                <a routerLink="/contact" class="btn-primary">
-                  Work With Me
+                <a [routerLink]="pageData.hero.cta.primary.path" class="btn-primary">
+                  {{ pageData.hero.cta.primary.label }}
                 </a>
-                <a routerLink="/services" class="btn-secondary">
-                  View Programs
+                <a [routerLink]="pageData.hero.cta.secondary.path" class="btn-secondary">
+                  {{ pageData.hero.cta.secondary.label }}
                 </a>
               </div>
             </div>
@@ -52,8 +48,8 @@ import { aboutPageData } from '../../data/about-page.data';
             <div class="relative">
               <div class="rounded-3xl overflow-hidden">
                 <img 
-                  src="https://images.unsplash.com/photo-1567013127542-490d757e51fc?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80"
-                  alt="Coach Alex Rivera"
+                  [src]="pageData.hero.image"
+                  [alt]="pageData.hero.imageAlt"
                   class="w-full h-[500px] lg:h-[600px] object-cover"
                 >
               </div>
@@ -65,47 +61,28 @@ import { aboutPageData } from '../../data/about-page.data';
       </section>
 
       <!-- Story Section -->
-      <section class="section-padding bg-dark-100">
+      <section class="section-padding bg-black">
         <div class="container-max mx-auto">
           <div class="max-w-4xl mx-auto">
             <h2 class="font-display text-4xl sm:text-5xl text-center mb-12">
-              MY <span class="text-gradient">STORY</span>
+              {{ pageData.story.title.line1 }} <span class="text-gradient">{{ pageData.story.title.line2 }}</span>
             </h2>
 
             <div class="space-y-8 text-white/70 text-lg leading-relaxed">
-              <p>
-                Growing up, I was the kid who was always picked last for sports teams. Overweight, 
-                lacking confidence, and struggling with my self-image, I never imagined that fitness 
-                would become my life's purpose.
-              </p>
-              <p>
-                Everything changed when I was 18. A moment of clarity led me to step into a gym for 
-                the first time, and despite feeling completely out of place, something clicked. That 
-                first workout sparked a transformation that would redefine my entire life.
-              </p>
-              <p>
-                Over the next few years, I immersed myself in the science of fitness and nutrition. 
-                I earned certifications from NASM, Precision Nutrition, and specialized in sports 
-                psychology. But more importantly, I experienced firsthand the life-changing power of 
-                physical transformation.
-              </p>
-              <p>
-                Today, I have helped over 500 clients achieve results they once thought impossible. 
-                From complete beginners to competitive athletes, I have had the privilege of guiding 
-                people through their own transformations. And every single success story reminds me 
-                why I do what I do.
-              </p>
+              @for (paragraph of pageData.story.paragraphs; track $index) {
+                <p>{{ paragraph }}</p>
+              }
             </div>
           </div>
         </div>
       </section>
 
       <!-- Philosophy Section -->
-      <section class="section-padding bg-dark">
+      <section class="section-padding bg-black">
         <div class="container-max mx-auto">
           <div class="text-center mb-16">
             <h2 class="font-display text-4xl sm:text-5xl mb-6">
-              MY <span class="text-gradient">PHILOSOPHY</span>
+              {{ pageData.philosophy.title.line1 }} <span class="text-gradient">{{ pageData.philosophy.title.line2 }}</span>
             </h2>
           </div>
 
@@ -124,11 +101,11 @@ import { aboutPageData } from '../../data/about-page.data';
       </section>
 
       <!-- Certifications Section -->
-      <section class="section-padding bg-dark-100">
+      <section class="section-padding bg-black">
         <div class="container-max mx-auto">
           <div class="text-center mb-16">
             <h2 class="font-display text-4xl sm:text-5xl mb-6">
-              CREDENTIALS & <span class="text-gradient">CERTIFICATIONS</span>
+              {{ pageData.certifications.title.line1 }} <span class="text-gradient">{{ pageData.certifications.title.line2 }}</span>
             </h2>
           </div>
 
@@ -149,18 +126,18 @@ import { aboutPageData } from '../../data/about-page.data';
       </section>
 
       <!-- CTA Section -->
-      <section class="section-padding bg-dark relative overflow-hidden">
+      <section class="section-padding bg-black relative overflow-hidden">
         <div class="absolute inset-0 bg-gradient-to-r from-primary-600/10 via-transparent to-primary-600/10"></div>
         <div class="container-max mx-auto relative z-10 text-center">
           <h2 class="font-display text-4xl sm:text-5xl mb-6">
-            READY TO START YOUR 
-            <span class="text-gradient">TRANSFORMATION</span>?
+            {{ pageData.cta.title.line1 }}
+            <span class="text-gradient">{{ pageData.cta.title.line2 }}</span>?
           </h2>
           <p class="text-white/60 text-lg max-w-2xl mx-auto mb-10">
-            Let us work together to unlock your full potential and achieve the results you deserve.
+            {{ pageData.cta.description }}
           </p>
-          <a routerLink="/contact" class="btn-primary inline-flex items-center gap-2">
-            Schedule Free Consultation
+          <a [routerLink]="pageData.cta.button.path" class="btn-primary inline-flex items-center gap-2">
+            {{ pageData.cta.button.label }}
             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
             </svg>

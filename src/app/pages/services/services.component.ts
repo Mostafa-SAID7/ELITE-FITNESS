@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
-import { servicesPageData } from '../../data/services-page.data';
+import { servicesPageData, ComparisonFeature, ComparisonPlan } from '../../data/services-page.data';
 
 @Component({
   selector: 'app-services',
@@ -10,27 +10,26 @@ import { servicesPageData } from '../../data/services-page.data';
   template: `
     <div class="pt-20">
       <!-- Hero Section -->
-      <section class="section-padding bg-dark relative overflow-hidden">
+      <section class="section-padding bg-black relative overflow-hidden">
         <div class="absolute inset-0">
           <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-primary-600/10 rounded-full blur-3xl"></div>
         </div>
 
         <div class="container-max mx-auto relative z-10 text-center">
           <span class="inline-block text-primary-500 text-sm font-semibold tracking-wider uppercase mb-4">
-            Our Programs
+            {{ pageData.hero.badge }}
           </span>
           <h1 class="font-display text-5xl sm:text-6xl md:text-7xl mb-6">
-            ELITE <span class="text-gradient">TRAINING</span> PROGRAMS
+            {{ pageData.hero.title.line1 }} <span class="text-gradient">{{ pageData.hero.title.line2 }}</span> {{ pageData.hero.title.line3 }}
           </h1>
           <p class="text-white/60 text-lg max-w-2xl mx-auto">
-            Choose the program that aligns with your goals. Every program includes personalized attention 
-            and proven strategies for maximum results.
+            {{ pageData.hero.description }}
           </p>
         </div>
       </section>
 
       <!-- Programs Section -->
-      <section class="section-padding bg-dark-100">
+      <section class="section-padding bg-black">
         <div class="container-max mx-auto">
           <div class="space-y-20">
             @for (program of programs; track program.title; let i = $index; let even = $even) {
@@ -93,11 +92,11 @@ import { servicesPageData } from '../../data/services-page.data';
       </section>
 
       <!-- Comparison Table -->
-      <section class="section-padding bg-dark">
+      <section class="section-padding bg-black">
         <div class="container-max mx-auto">
           <div class="text-center mb-16">
             <h2 class="font-display text-4xl sm:text-5xl mb-6">
-              COMPARE <span class="text-gradient">PROGRAMS</span>
+              {{ pageData.comparison.title.line1 }} <span class="text-gradient">{{ pageData.comparison.title.line2 }}</span>
             </h2>
           </div>
 
@@ -148,7 +147,7 @@ import { servicesPageData } from '../../data/services-page.data';
       </section>
 
       <!-- FAQ Section -->
-      <section class="section-padding bg-dark-100">
+      <section class="section-padding bg-black">
         <div class="container-max mx-auto">
           <div class="text-center mb-16">
             <h2 class="font-display text-4xl sm:text-5xl mb-6">
@@ -188,18 +187,18 @@ import { servicesPageData } from '../../data/services-page.data';
       </section>
 
       <!-- CTA Section -->
-      <section class="section-padding bg-dark relative overflow-hidden">
+      <section class="section-padding bg-black relative overflow-hidden">
         <div class="absolute inset-0 bg-gradient-to-r from-primary-600/10 via-transparent to-primary-600/10"></div>
         <div class="container-max mx-auto relative z-10 text-center">
           <h2 class="font-display text-4xl sm:text-5xl mb-6">
-            NOT SURE WHICH PROGRAM IS 
-            <span class="text-gradient">RIGHT FOR YOU</span>?
+            {{ pageData.cta.title.line1 }}
+            <span class="text-gradient">{{ pageData.cta.title.line2 }}</span>?
           </h2>
           <p class="text-white/60 text-lg max-w-2xl mx-auto mb-10">
-            Book a free consultation and let us help you find the perfect fit for your goals and lifestyle.
+            {{ pageData.cta.description }}
           </p>
-          <a routerLink="/contact" class="btn-primary inline-flex items-center gap-2">
-            Book Free Consultation
+          <a [routerLink]="pageData.cta.button.path" class="btn-primary inline-flex items-center gap-2">
+            {{ pageData.cta.button.label }}
             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
             </svg>
@@ -217,8 +216,8 @@ import { servicesPageData } from '../../data/services-page.data';
 export class ServicesComponent {
   pageData = servicesPageData;
   programs = servicesPageData.programs;
-  comparisonPlans = servicesPageData.comparison.plans;
-  comparisonFeatures = servicesPageData.comparison.features;
+  comparisonPlans: ComparisonPlan[] = servicesPageData.comparison.plans;
+  comparisonFeatures: ComparisonFeature[] = servicesPageData.comparison.features;
   faqs = [...servicesPageData.faqs];
 
   toggleFaq(index: number) {

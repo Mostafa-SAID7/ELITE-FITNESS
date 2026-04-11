@@ -1,3 +1,15 @@
+export type PlanName = 'Personal Training' | 'Online Coaching' | 'Nutrition Coaching' | 'Transformation';
+
+export interface ComparisonPlan {
+  name: PlanName;
+  popular: boolean;
+}
+
+export interface ComparisonFeature {
+  name: string;
+  values: Record<PlanName, boolean | string>;
+}
+
 export const servicesPageData = {
   hero: {
     badge: 'Our Programs',
@@ -80,20 +92,20 @@ export const servicesPageData = {
       line2: 'PROGRAMS'
     },
     plans: [
-      { name: 'Personal Training', popular: false },
-      { name: 'Online Coaching', popular: true },
-      { name: 'Nutrition Coaching', popular: false },
-      { name: 'Transformation', popular: false }
-    ],
+      { name: 'Personal Training' as PlanName, popular: false },
+      { name: 'Online Coaching' as PlanName, popular: true },
+      { name: 'Nutrition Coaching' as PlanName, popular: false },
+      { name: 'Transformation' as PlanName, popular: false }
+    ] as ComparisonPlan[],
     features: [
       { name: 'Custom Workout Plans', values: { 'Personal Training': true, 'Online Coaching': true, 'Nutrition Coaching': false, 'Transformation': true } },
       { name: 'In-Person Sessions', values: { 'Personal Training': true, 'Online Coaching': false, 'Nutrition Coaching': false, 'Transformation': true } },
-      { name: 'Nutrition Guidance', values: { 'Personal Training': 'Basic', 'Online Coaching': 'Basic', 'Nutrition Coaching': true, 'Transformation': true } },
+      { name: 'Nutrition Guidance', values: { 'Personal Training': 'Basic' as const, 'Online Coaching': 'Basic' as const, 'Nutrition Coaching': true, 'Transformation': true } },
       { name: 'Video Library Access', values: { 'Personal Training': true, 'Online Coaching': true, 'Nutrition Coaching': false, 'Transformation': true } },
       { name: 'Weekly Check-ins', values: { 'Personal Training': true, 'Online Coaching': true, 'Nutrition Coaching': true, 'Transformation': true } },
       { name: 'Mindset Coaching', values: { 'Personal Training': false, 'Online Coaching': false, 'Nutrition Coaching': false, 'Transformation': true } },
       { name: 'Priority Support', values: { 'Personal Training': false, 'Online Coaching': false, 'Nutrition Coaching': false, 'Transformation': true } }
-    ]
+    ] as ComparisonFeature[]
   },
   faqs: [
     {
