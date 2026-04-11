@@ -8,7 +8,7 @@ import { aboutPageData } from '../../data/about-page.data';
   standalone: true,
   imports: [CommonModule, RouterLink],
   template: `
-    <div class="pt-20">
+    <div>
       <!-- Hero Section -->
       <section class="section-padding bg-black relative overflow-hidden">
         <div class="absolute inset-0">

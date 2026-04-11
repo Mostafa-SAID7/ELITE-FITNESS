@@ -17,8 +17,6 @@ import { heroData } from '../../data/hero.data';
         ></div>
         <div class="absolute inset-0 bg-gradient-to-b from-black/80 via-black/70 to-black"></div>
         <div class="absolute inset-0 bg-gradient-to-r from-black via-transparent to-transparent"></div>
-        <!-- Red accent gradient -->
-        <div class="absolute bottom-0 right-0 w-1/2 h-1/2 bg-gradient-to-tl from-primary-600/20 to-transparent"></div>
       </div>
 
       <!-- Animated particles/elements -->

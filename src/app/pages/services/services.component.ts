@@ -1,14 +1,14 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
-import { servicesPageData, ComparisonFeature, ComparisonPlan } from '../../data/services-page.data';
+import { servicesPageData, ComparisonFeature, ComparisonPlan, PlanName } from '../../data/services-page.data';
 
 @Component({
   selector: 'app-services',
   standalone: true,
   imports: [CommonModule, RouterLink],
   template: `
-    <div class="pt-20">
+    <div>
       <!-- Hero Section -->
       <section class="section-padding bg-black relative overflow-hidden">
         <div class="absolute inset-0">
@@ -125,16 +125,16 @@ import { servicesPageData, ComparisonFeature, ComparisonPlan } from '../../data/
                     <td class="py-4 px-4 text-white/70">{{ feature.name }}</td>
                     @for (plan of comparisonPlans; track plan.name) {
                       <td class="text-center py-4 px-4">
-                        @if (feature.values[plan.name] === true) {
+                        @if (getFeatureValue(feature, plan.name) === true) {
                           <svg class="w-6 h-6 text-primary-500 mx-auto" fill="currentColor" viewBox="0 0 20 20">
                             <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
                           </svg>
-                        } @else if (feature.values[plan.name] === false) {
+                        } @else if (getFeatureValue(feature, plan.name) === false) {
                           <svg class="w-6 h-6 text-white/20 mx-auto" fill="currentColor" viewBox="0 0 20 20">
                             <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd" />
                           </svg>
                         } @else {
-                          <span class="text-white/80">{{ feature.values[plan.name] }}</span>
+                          <span class="text-white/80">{{ getFeatureValue(feature, plan.name) }}</span>
                         }
                       </td>
                     }
@@ -219,6 +219,10 @@ export class ServicesComponent {
   comparisonPlans: ComparisonPlan[] = servicesPageData.comparison.plans;
   comparisonFeatures: ComparisonFeature[] = servicesPageData.comparison.features;
   faqs = [...servicesPageData.faqs];
+
+  getFeatureValue(feature: ComparisonFeature, planName: PlanName): boolean | string {
+    return feature.values[planName];
+  }
 
   toggleFaq(index: number) {
     this.faqs[index].open = !this.faqs[index].open;

@@ -12,7 +12,7 @@ import { contactPageData } from '../../data/contact-page.data';
     ReactiveFormsModule
   ],
   template: `
-    <div class="pt-20">
+    <div>
       <!-- Hero Section -->
       <section class="section-padding bg-dark relative overflow-hidden">
         <div class="absolute inset-0">
@@ -164,15 +164,16 @@ import { contactPageData } from '../../data/contact-page.data';
                     <!-- Goal -->
                     <div>
                       <label class="block text-white/60 text-sm mb-2">What is your primary goal? *</label>
-                      <select 
+                      <select
                         formControlName="goal"
                         class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white
                                focus:border-primary-500 focus:outline-none focus:ring-1 focus:ring-primary-500
                                transition-all duration-300 appearance-none cursor-pointer"
+                        style="background-image: url('data:image/svg+xml;charset=US-ASCII,<svg xmlns=&quot;http://www.w3.org/2000/svg&quot; viewBox=&quot;0 0 4 5&quot;><path fill=&quot;%23ffffff&quot; d=&quot;M2 0L0 2h4zm0 5L0 3h4z&quot;/></svg>'); background-repeat: no-repeat; background-position: right 1rem center; background-size: 0.75rem;"
                       >
-                        <option value="" class="bg-dark-100">Select your goal</option>
+                        <option value="" disabled selected class="text-white/40">Select your goal</option>
                         @for (goal of goals; track goal) {
-                          <option [value]="goal" class="bg-dark-100">{{ goal }}</option>
+                          <option [value]="goal" class="bg-dark text-white">{{ goal }}</option>
                         }
                       </select>
                       @if (contactForm.get('goal')?.invalid && contactForm.get('goal')?.touched) {
@@ -243,7 +244,7 @@ import { contactPageData } from '../../data/contact-page.data';
     :host {
       display: block;
     }
-    
+
     select option {
       background-color: #111111;
       color: white;
