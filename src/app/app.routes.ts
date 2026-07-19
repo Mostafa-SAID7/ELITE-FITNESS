@@ -7,6 +7,16 @@ export const routes: Routes = [
     title: 'HIT Egypt | Your Beach Workout Clan'
   },
   {
+    path: 'testimonials',
+    loadComponent: () => import('./pages/testimonials/testimonials.component').then(m => m.TestimonialsPageComponent),
+    title: 'Member Stories | HIT Egypt'
+  },
+  {
+    path: 'submit-testimonial',
+    loadComponent: () => import('./pages/submit-testimonial/submit-testimonial.component').then(m => m.SubmitTestimonialComponent),
+    title: 'Share Your Story | HIT Egypt'
+  },
+  {
     path: 'about',
     loadComponent: () => import('./pages/about/about.component').then(m => m.AboutComponent),
     title: 'About | HIT Egypt'
