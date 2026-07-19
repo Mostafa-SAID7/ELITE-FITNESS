@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component, signal, HostListener, ElementRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { contactPageData } from '../../data/contact-page.data';
@@ -28,12 +28,11 @@ import { contactPageData } from '../../data/contact-page.data';
                 Contact Us
               </span>
               <h1 class="font-display text-5xl sm:text-6xl md:text-7xl mb-6">
-                LET'S START YOUR 
-                <span class="text-gradient">TRANSFORMATION</span>
+                OUR PACKAGES ARE JUST
+                <span class="text-gradient">A FEW TAPS AWAY</span>
               </h1>
               <p class="text-white/60 text-lg mb-12 leading-relaxed">
-                Ready to take the first step? Fill out the form and I'll get back to you within 24 hours 
-                to schedule your free consultation.
+                Fill in this quick form and you'll be directed to our packages. If you have further questions, reach us through our social media platforms.
               </p>
 
               <!-- Contact Details -->
@@ -86,7 +85,7 @@ import { contactPageData } from '../../data/contact-page.data';
                   </div>
                   <h3 class="font-display text-3xl mb-4">MESSAGE SENT!</h3>
                   <p class="text-white/60 mb-8">
-                    Thank you for reaching out. I'll get back to you within 24 hours.
+                    Thank you for reaching out! The HIT Egypt team will be in touch with your package options soon.
                   </p>
                   <button 
                     class="btn-secondary"
@@ -161,23 +160,65 @@ import { contactPageData } from '../../data/contact-page.data';
                       >
                     </div>
 
-                    <!-- Goal -->
-                    <div>
-                      <label class="block text-white/60 text-sm mb-2">What is your primary goal? *</label>
-                      <select
-                        formControlName="goal"
-                        class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white
-                               focus:border-primary-500 focus:outline-none focus:ring-1 focus:ring-primary-500
-                               transition-all duration-300 appearance-none cursor-pointer"
-                        style="background-image: url('data:image/svg+xml;charset=US-ASCII,<svg xmlns=&quot;http://www.w3.org/2000/svg&quot; viewBox=&quot;0 0 4 5&quot;><path fill=&quot;%23ffffff&quot; d=&quot;M2 0L0 2h4zm0 5L0 3h4z&quot;/></svg>'); background-repeat: no-repeat; background-position: right 1rem center; background-size: 0.75rem;"
+                    <!-- Location custom dropdown -->
+                    <div class="relative" #dropdownRef>
+                      <label class="block text-white/60 text-sm mb-2">Choose your desired location *</label>
+
+                      <!-- Trigger -->
+                      <button
+                        type="button"
+                        (click)="toggleDropdown()"
+                        [class]="'w-full flex items-center justify-between px-4 py-3 rounded-xl border transition-all duration-300 cursor-pointer text-left ' +
+                          (dropdownOpen()
+                            ? 'border-primary-500 ring-1 ring-primary-500 bg-white/5'
+                            : (contactForm.get(\'goal\')?.invalid && contactForm.get(\'goal\')?.touched
+                                ? 'border-primary-500/60 bg-white/5'
+                                : 'border-white/10 bg-white/5 hover:border-white/30'))"
+                        [attr.aria-expanded]="dropdownOpen()"
                       >
-                        <option value="" disabled selected class="text-white/40">Select your goal</option>
-                        @for (goal of goals; track goal) {
-                          <option [value]="goal" class="bg-dark text-white">{{ goal }}</option>
-                        }
-                      </select>
+                        <span [class]="selectedLocation() ? 'text-white' : 'text-white/30'">
+                          {{ selectedLocation() || 'Select your location' }}
+                        </span>
+                        <svg
+                          class="w-4 h-4 text-white/50 flex-shrink-0 transition-transform duration-300"
+                          [class.rotate-180]="dropdownOpen()"
+                          fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                        >
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                        </svg>
+                      </button>
+
+                      <!-- Options panel -->
+                      @if (dropdownOpen()) {
+                        <div
+                          class="absolute z-50 left-0 right-0 mt-2 rounded-xl border border-white/10 overflow-hidden shadow-2xl"
+                          style="background: #1a1a1a;"
+                        >
+                          <ul role="listbox" class="py-1 max-h-64 overflow-y-auto custom-scrollbar">
+                            @for (goal of goals; track goal) {
+                              <li
+                                role="option"
+                                [attr.aria-selected]="selectedLocation() === goal"
+                                (click)="selectLocation(goal)"
+                                class="flex items-center justify-between px-4 py-3 cursor-pointer transition-all duration-150 text-sm group"
+                                [class]="selectedLocation() === goal
+                                  ? 'bg-primary-600/20 text-primary-400'
+                                  : 'text-white/80 hover:bg-white/5 hover:text-white'"
+                              >
+                                <span>{{ goal }}</span>
+                                @if (selectedLocation() === goal) {
+                                  <svg class="w-4 h-4 text-primary-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7" />
+                                  </svg>
+                                }
+                              </li>
+                            }
+                          </ul>
+                        </div>
+                      }
+
                       @if (contactForm.get('goal')?.invalid && contactForm.get('goal')?.touched) {
-                        <p class="text-primary-500 text-sm mt-2">Please select a goal</p>
+                        <p class="text-primary-500 text-sm mt-2">Please select a location</p>
                       }
                     </div>
 
@@ -231,8 +272,8 @@ import { contactPageData } from '../../data/contact-page.data';
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
               </svg>
             </div>
-            <h3 class="font-display text-2xl mb-2">VISIT OUR GYM</h3>
-            <p class="text-white/60">123 Fitness Street, Los Angeles, CA 90001</p>
+            <h3 class="font-display text-2xl mb-2">OUR LOCATIONS</h3>
+            <p class="text-white/60">8 venues across Cairo, Egypt — and expanding</p>
           </div>
         </div>
         <!-- Placeholder for actual map integration -->
@@ -241,47 +282,82 @@ import { contactPageData } from '../../data/contact-page.data';
     </div>
   `,
   styles: [`
-    :host {
-      display: block;
-    }
+    :host { display: block; }
 
-    select option {
-      background-color: #111111;
-      color: white;
+    .custom-scrollbar::-webkit-scrollbar { width: 4px; }
+    .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+      background: rgba(255,255,255,0.15);
+      border-radius: 9999px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+      background: rgba(239,68,68,0.5);
     }
   `]
 })
 export class ContactComponent {
-  private fb = new FormBuilder();
-  
-  formSubmitted = signal(false);
-  isSubmitting = signal(false);
-  pageData = contactPageData;
+  private fb       = new FormBuilder();
+  private elRef: ElementRef;
+
+  constructor(elRef: ElementRef) { this.elRef = elRef; }
+
+  formSubmitted   = signal(false);
+  isSubmitting    = signal(false);
+  dropdownOpen    = signal(false);
+  selectedLocation = signal('');
+  pageData        = contactPageData;
 
   contactForm: FormGroup = this.fb.group({
     firstName: ['', Validators.required],
-    lastName: ['', Validators.required],
-    email: ['', [Validators.required, Validators.email]],
-    phone: [''],
-    goal: ['', Validators.required],
-    message: ['']
+    lastName:  ['', Validators.required],
+    email:     ['', [Validators.required, Validators.email]],
+    phone:     [''],
+    goal:      ['', Validators.required],
+    message:   ['']
   });
 
-  goals = contactPageData.goals;
-  contactInfo = contactPageData.contactInfo;
-  socialLinks = contactPageData.socialLinks;
+  goals        = contactPageData.goals;
+  contactInfo  = contactPageData.contactInfo;
+  socialLinks  = contactPageData.socialLinks;
+
+  toggleDropdown() {
+    this.dropdownOpen.update(v => !v);
+    if (!this.dropdownOpen()) {
+      this.contactForm.get('goal')?.markAsTouched();
+    }
+  }
+
+  selectLocation(location: string) {
+    this.selectedLocation.set(location);
+    this.contactForm.get('goal')?.setValue(location);
+    this.contactForm.get('goal')?.markAsTouched();
+    this.dropdownOpen.set(false);
+  }
+
+  @HostListener('document:click', ['$event'])
+  onDocumentClick(event: MouseEvent) {
+    if (this.dropdownOpen() && !this.elRef.nativeElement.contains(event.target)) {
+      this.dropdownOpen.set(false);
+      this.contactForm.get('goal')?.markAsTouched();
+    }
+  }
+
+  @HostListener('document:keydown.escape')
+  onEscape() {
+    if (this.dropdownOpen()) {
+      this.dropdownOpen.set(false);
+      this.contactForm.get('goal')?.markAsTouched();
+    }
+  }
 
   onSubmit() {
     if (this.contactForm.valid) {
       this.isSubmitting.set(true);
-      
-      // Simulate API call
       setTimeout(() => {
         this.isSubmitting.set(false);
         this.formSubmitted.set(true);
       }, 1500);
     } else {
-      // Mark all fields as touched to show validation errors
       Object.keys(this.contactForm.controls).forEach(key => {
         this.contactForm.get(key)?.markAsTouched();
       });
@@ -290,6 +366,7 @@ export class ContactComponent {
 
   resetForm() {
     this.contactForm.reset();
+    this.selectedLocation.set('');
     this.formSubmitted.set(false);
   }
 }

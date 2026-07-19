@@ -12,9 +12,9 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
         <div class="flex items-center justify-between h-20">
           <a routerLink="/" class="flex items-center gap-3 group">
             <div class="w-12 h-12 rounded-full bg-primary-600 flex items-center justify-center">
-              <span class="font-display text-2xl text-white">EF</span>
+              <span class="font-display text-xl text-white font-black">HIT</span>
             </div>
-            <span class="font-display text-2xl tracking-wider hidden sm:block text-white">ELITE FITNESS</span>
+            <span class="font-display text-2xl tracking-wider hidden sm:block text-white">HIT EGYPT</span>
           </a>
           
           <div class="hidden lg:flex items-center gap-8">
@@ -28,7 +28,7 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
           </div>
           
           <div class="hidden lg:block">
-            <a routerLink="/contact" class="btn-primary">Start Your Journey</a>
+            <a routerLink="/contact" class="btn-primary">Book a Spot</a>
           </div>
           
           <button class="lg:hidden w-12 h-12 rounded-full bg-white/10 flex items-center justify-center cursor-pointer hover:bg-white/20 transition-colors" (click)="toggleMobileMenu()">

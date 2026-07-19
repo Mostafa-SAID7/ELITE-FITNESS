@@ -1,4 +1,4 @@
-export type PlanName = 'Personal Training' | 'Online Coaching' | 'Nutrition Coaching' | 'Transformation';
+export type PlanName = 'Group Sessions' | 'Personal Training' | 'Online Training' | 'Transformation';
 
 export interface ComparisonPlan {
   name: PlanName;
@@ -14,75 +14,75 @@ export const servicesPageData = {
   hero: {
     badge: 'Our Programs',
     title: {
-      line1: 'ELITE',
-      line2: 'TRAINING',
-      line3: 'PROGRAMS'
+      line1: 'HIT',
+      line2: 'PROGRAMS',
+      line3: 'FOR EVERY LEVEL'
     },
-    description: 'Choose the program that aligns with your goals. Every program includes personalized attention and proven strategies for maximum results.'
+    description: 'From beginner group sessions to advanced transformation programs — choose what fits your goals and we will take you all the way.'
   },
   programs: [
     {
-      title: 'PERSONAL TRAINING',
-      category: '1-on-1 Coaching',
-      description: 'Get undivided attention with customized training sessions designed specifically for your body, goals, and schedule. Every workout is optimized for maximum results.',
-      price: '$150',
-      priceUnit: 'per session',
-      image: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
+      title: 'GROUP SESSIONS',
+      category: 'All Levels',
+      description: 'Our flagship group sessions are designed for every fitness level. Beginner-friendly sessions like Hyper45, Sweat45, and HIT60 get you moving, while Perform and Prymal push intermediate athletes further.',
+      price: 'Book a Package',
+      priceUnit: 'multiple options',
+      image: 'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
       features: [
-        'Personalized workout plans',
-        'Real-time form correction',
-        'Progress tracking & analysis',
-        'Flexible scheduling',
-        'Nutrition guidance included',
-        'Direct message support'
+        'Hyper45 & Hyper60',
+        'Sweat45 & HIT60',
+        'SWEAT Hyrox Simulation',
+        'Perform (Intermediate)',
+        'Prymal (Intermediate)',
+        'Certified coaches every session'
       ]
     },
     {
-      title: 'ONLINE COACHING',
-      category: 'Remote Training',
-      description: 'Train anywhere in the world with our comprehensive online coaching program. Perfect for busy professionals who need flexibility without sacrificing results.',
-      price: '$199',
-      priceUnit: 'per month',
-      image: 'https://images.unsplash.com/photo-1549576490-b0b4831ef60a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
+      title: 'SPECIALTY SESSIONS',
+      category: 'Targeted Training',
+      description: 'Beyond our core sessions, HIT offers specialty classes that target specific disciplines and demographics — from calming Yoga by the beach to explosive Calisthenics.',
+      price: 'Book a Package',
+      priceUnit: 'multiple options',
+      image: 'https://images.unsplash.com/photo-1599901860904-17e6ed7083a0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
       features: [
-        'Custom training programs',
-        'Video workout library',
-        'Weekly check-ins',
-        'Mobile app access',
-        'Community support',
-        '24/7 coach messaging'
+        'Calisthenics',
+        'Yoga',
+        'Pilates',
+        'Sculpt (Ladies Only)',
+        'Teens program',
+        'Beach yoga sessions (Sahel)'
       ]
     },
     {
-      title: 'NUTRITION COACHING',
-      category: 'Diet & Lifestyle',
-      description: 'Transform your relationship with food. Our evidence-based nutrition coaching helps you fuel your body properly for optimal performance and sustainable results.',
-      price: '$129',
-      priceUnit: 'per month',
-      image: 'https://images.unsplash.com/photo-1490645935967-10de6ba17061?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
-      features: [
-        'Personalized meal plans',
-        'Macro tracking guidance',
-        'Supplement recommendations',
-        'Weekly nutrition calls',
-        'Recipe database access',
-        'Lifestyle coaching'
-      ]
-    },
-    {
-      title: 'TRANSFORMATION PACKAGE',
-      category: 'Complete Program',
-      description: 'The ultimate all-in-one package combining personal training, nutrition coaching, and lifestyle optimization for those serious about complete transformation.',
-      price: '$399',
-      priceUnit: 'per month',
+      title: 'TRANSFORMATION PROGRAMS',
+      category: 'Complete Change',
+      description: 'Structured multi-week programs built for real, lasting results. Whether you want to build, shred, or completely transform — we have a program designed exactly for you.',
+      price: 'Book a Package',
+      priceUnit: 'program-based',
       image: 'https://images.unsplash.com/photo-1517836357463-d25dfeac3438?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
       features: [
-        'All personal training benefits',
-        'All nutrition coaching benefits',
-        'Priority scheduling',
-        'Monthly assessments',
-        'Mindset coaching',
-        'VIP support access'
+        '21-Day Transformation Program',
+        'Fabfit Ladies Program',
+        'BUILD+ Program',
+        'Hybrid Rockstar Program',
+        'Progress tracking',
+        'Coach guidance throughout'
+      ]
+    },
+    {
+      title: 'PERSONAL & ONLINE TRAINING',
+      category: '1-on-1 Coaching',
+      description: 'Get undivided attention with our Personal Training sessions or train from anywhere with One-on-One Online Training — plus customized nutrition programs to accelerate your results.',
+      price: 'Book a Package',
+      priceUnit: 'per session/month',
+      image: 'https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
+      features: [
+        'One-on-one in-person training',
+        'Online remote coaching',
+        'Customized nutrition programs',
+        'Corporate wellness programs',
+        'Personalized workout plans',
+        'Ongoing coach support'
       ]
     }
   ],
@@ -92,45 +92,45 @@ export const servicesPageData = {
       line2: 'PROGRAMS'
     },
     plans: [
+      { name: 'Group Sessions' as PlanName, popular: true },
       { name: 'Personal Training' as PlanName, popular: false },
-      { name: 'Online Coaching' as PlanName, popular: true },
-      { name: 'Nutrition Coaching' as PlanName, popular: false },
+      { name: 'Online Training' as PlanName, popular: false },
       { name: 'Transformation' as PlanName, popular: false }
     ] as ComparisonPlan[],
     features: [
-      { name: 'Custom Workout Plans', values: { 'Personal Training': true, 'Online Coaching': true, 'Nutrition Coaching': false, 'Transformation': true } },
-      { name: 'In-Person Sessions', values: { 'Personal Training': true, 'Online Coaching': false, 'Nutrition Coaching': false, 'Transformation': true } },
-      { name: 'Nutrition Guidance', values: { 'Personal Training': 'Basic' as const, 'Online Coaching': 'Basic' as const, 'Nutrition Coaching': true, 'Transformation': true } },
-      { name: 'Video Library Access', values: { 'Personal Training': true, 'Online Coaching': true, 'Nutrition Coaching': false, 'Transformation': true } },
-      { name: 'Weekly Check-ins', values: { 'Personal Training': true, 'Online Coaching': true, 'Nutrition Coaching': true, 'Transformation': true } },
-      { name: 'Mindset Coaching', values: { 'Personal Training': false, 'Online Coaching': false, 'Nutrition Coaching': false, 'Transformation': true } },
-      { name: 'Priority Support', values: { 'Personal Training': false, 'Online Coaching': false, 'Nutrition Coaching': false, 'Transformation': true } }
+      { name: 'Certified Coaches', values: { 'Group Sessions': true, 'Personal Training': true, 'Online Training': true, 'Transformation': true } },
+      { name: 'Custom Plan', values: { 'Group Sessions': false, 'Personal Training': true, 'Online Training': true, 'Transformation': true } },
+      { name: 'In-Person Sessions', values: { 'Group Sessions': true, 'Personal Training': true, 'Online Training': false, 'Transformation': true } },
+      { name: 'Nutrition Guidance', values: { 'Group Sessions': false, 'Personal Training': 'Basic', 'Online Training': 'Basic', 'Transformation': true } },
+      { name: 'Progress Tracking', values: { 'Group Sessions': false, 'Personal Training': true, 'Online Training': true, 'Transformation': true } },
+      { name: 'Community Access', values: { 'Group Sessions': true, 'Personal Training': true, 'Online Training': true, 'Transformation': true } },
+      { name: 'Flexible Scheduling', values: { 'Group Sessions': true, 'Personal Training': true, 'Online Training': true, 'Transformation': false } }
     ] as ComparisonFeature[]
   },
   faqs: [
     {
-      question: 'How do I know which program is right for me?',
-      answer: 'We offer a free consultation to assess your goals, fitness level, and lifestyle. This helps us recommend the perfect program for your specific needs.',
+      question: 'What programs are best for beginners?',
+      answer: 'Our Hyper45, Sweat45, and HIT60 sessions are perfect for beginners and all levels. Our coaches scale every session so you always work at the right intensity.',
       open: false
     },
     {
-      question: 'Can I switch programs if my needs change?',
-      answer: 'Absolutely! We understand that goals evolve. You can upgrade, downgrade, or switch programs at any time with no penalties.',
+      question: 'How do I find the nearest HIT location?',
+      answer: 'HIT Egypt operates 8 locations across Cairo: Terrace Mall (El Shorouk), Patio Casa (El Shorouk), Concord Plaza, Platinum Club, Katameya Residence, Suncity Mall (Sheraton), Heliopolis Sporting Club, and HIT Haus (Concord Gardens). Use the contact form to select your preferred venue.',
       open: false
     },
     {
-      question: 'What if I am a complete beginner?',
-      answer: 'All our programs are designed to meet you where you are. Whether you have never worked out before or you are an experienced athlete, we adapt our approach to your level.',
+      question: 'Do you offer programs specifically for women?',
+      answer: 'Yes! Our Sculpt sessions are exclusively for ladies, and the Fabfit Ladies Program is a dedicated transformation program designed for women. Yoga and Pilates sessions are also very popular with our female athletes.',
       open: false
     },
     {
-      question: 'How soon will I see results?',
-      answer: 'Most clients start noticing changes within 2-4 weeks. However, sustainable transformation takes time. We focus on building habits that lead to lasting results.',
+      question: 'Can I train online with HIT Egypt?',
+      answer: 'Absolutely. We offer One-on-One Online Training so you can work with a certified HIT coach from anywhere in the world. Customized nutrition programs are also available remotely.',
       open: false
     },
     {
-      question: 'Do you offer refunds?',
-      answer: 'We offer a 100% satisfaction guarantee for the first 30 days. If you are not completely satisfied with your program, we will refund your investment.',
+      question: 'What is the Hyrox Simulation session?',
+      answer: 'SWEAT Hyrox Simulation is a session inspired by the Hyrox race format — a global fitness competition combining running and functional exercises. It is a beginner-friendly but challenging full-body workout.',
       open: false
     }
   ],
@@ -139,9 +139,9 @@ export const servicesPageData = {
       line1: 'NOT SURE WHICH PROGRAM IS',
       line2: 'RIGHT FOR YOU'
     },
-    description: 'Book a free consultation and let us help you find the perfect fit for your goals and lifestyle.',
+    description: 'Fill in our quick form and select your nearest location — we will guide you to the perfect package.',
     button: {
-      label: 'Book Free Consultation',
+      label: 'Book a Spot Now',
       path: '/contact'
     }
   }

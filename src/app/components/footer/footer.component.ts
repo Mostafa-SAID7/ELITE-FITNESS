@@ -111,11 +111,12 @@ import { footerData } from '../../data/footer.data';
         <!-- Bottom Bar -->
         <div class="pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4">
           <p class="text-white/40 text-sm">
-            {{ currentYear }} Elite Fitness Coaching. All rights reserved.
+            {{ currentYear }} HIT Egypt. All rights reserved.
           </p>
           <div class="flex gap-6 text-sm">
-            <a href="#" class="text-white/40 hover:text-white transition-colors">Privacy Policy</a>
-            <a href="#" class="text-white/40 hover:text-white transition-colors">Terms of Service</a>
+            <a routerLink="/privacy-policy" class="text-white/40 hover:text-white transition-colors">Privacy Policy</a>
+            <a routerLink="/terms-of-service" class="text-white/40 hover:text-white transition-colors">Terms of Service</a>
+            <a routerLink="/cookie-policy" class="text-white/40 hover:text-white transition-colors">Cookie Policy</a>
           </div>
         </div>
       </div>
