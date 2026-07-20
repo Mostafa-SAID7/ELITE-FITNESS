@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Component, OnInit, inject } from '@angular/core';
+import { Router, RouterOutlet, NavigationEnd } from '@angular/router';
+import { filter } from 'rxjs/operators';
 
 import { HeaderComponent, FooterComponent } from '@shared/components/layout';
 
@@ -7,19 +8,21 @@ import { HeaderComponent, FooterComponent } from '@shared/components/layout';
   selector: 'app-root',
   standalone: true,
   imports: [RouterOutlet, HeaderComponent, FooterComponent],
-  template: `
-    <div class="min-h-screen bg-black flex flex-col">
-      <app-header />
-      <main class="flex-1 pt-20">
-        <router-outlet />
-      </main>
-      <app-footer />
-    </div>
-  `,
-  styles: [`
-    :host {
-      display: block;
-    }
-  `]
+  templateUrl: './app.component.html'
 })
-export class AppComponent {}
+export class AppComponent implements OnInit {
+  private router = inject(Router);
+
+  ngOnInit() {
+    // Scroll to top on every route navigation
+    this.router.events
+      .pipe(filter(event => event instanceof NavigationEnd))
+      .subscribe(() => {
+        window.scrollTo({
+          top: 0,
+          left: 0,
+          behavior: 'smooth'
+        });
+      });
+  }
+}

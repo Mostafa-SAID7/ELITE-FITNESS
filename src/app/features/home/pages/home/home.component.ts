@@ -21,21 +21,7 @@ import { TestimonialsComponent } from '../../../testimonials/components/testimon
     StatsComponent,
     CtaSectionComponent
   ],
-  template: `
-    <div class="overflow-hidden">
-      <app-hero />
-      <app-stats />
-      <app-services-preview />
-      <app-about-preview />
-      <app-testimonials />
-      <app-cta-section />
-    </div>
-  `,
-  styles: [`
-    :host {
-      display: block;
-    }
-  `]
+  templateUrl: './home.component.html'
 })
 export class HomeComponent implements AfterViewInit, OnDestroy {
   private platformId = inject(PLATFORM_ID);
