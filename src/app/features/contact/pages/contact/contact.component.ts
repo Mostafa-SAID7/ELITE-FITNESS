@@ -2,6 +2,8 @@ import { Component, signal, HostListener, ElementRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CONTACT_PAGE_DATA } from '@features/contact/models/contact.model';
+import { CanComponentDeactivate } from '@core/guards';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-contact',
@@ -368,5 +370,21 @@ export class ContactComponent {
     this.contactForm.reset();
     this.selectedLocation.set('');
     this.formSubmitted.set(false);
+  }
+
+  /**
+   * CanComponentDeactivate Implementation
+   * Warns user before leaving page with unsaved changes
+   */
+  canDeactivate(): Observable<boolean> | Promise<boolean> | boolean {
+    // Allow navigation if form is pristine (not modified)
+    if (this.contactForm.pristine || this.formSubmitted()) {
+      return true;
+    }
+
+    // Form has unsaved changes - ask user for confirmation
+    return confirm(
+      'You have unsaved changes in the contact form. Are you sure you want to leave without sending your message?'
+    );
   }
 }

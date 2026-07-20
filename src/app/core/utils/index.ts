@@ -1,1 +1,1 @@
-// Utils barrel export
+export * from './error-handler';

@@ -1,1 +1,1 @@
-// Guards barrel export
+export * from './auth.guard';
