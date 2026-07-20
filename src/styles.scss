@@ -92,8 +92,19 @@ body {
            bg-clip-text text-transparent;
   }
 
+  // Standardized section spacing (reduced from 16-32 to 12-20)
   .section-padding {
-    @apply px-4 sm:px-6 lg:px-8 py-16 md:py-24 lg:py-32;
+    @apply px-4 sm:px-6 lg:px-8 py-12 md:py-16 lg:py-20;
+  }
+
+  // Compact section (for footer, smaller components)
+  .section-padding-compact {
+    @apply px-4 sm:px-6 lg:px-8 py-8 md:py-12 lg:py-16;
+  }
+
+  // Reduced spacing (for internal sections within pages)
+  .section-padding-reduced {
+    @apply px-4 sm:px-6 lg:px-8 py-8 md:py-12 lg:py-12;
   }
 
   .container-max {
