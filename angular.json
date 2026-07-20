@@ -33,7 +33,22 @@
             "assets": [
               "src/favicon.ico",
               "src/favicon.svg",
-              "src/assets"
+              "src/assets",
+              {
+                "glob": "robots.txt",
+                "input": "public",
+                "output": "/"
+              },
+              {
+                "glob": "sitemap.xml",
+                "input": "public",
+                "output": "/"
+              },
+              {
+                "glob": "manifest.json",
+                "input": "public",
+                "output": "/"
+              }
             ],
             "styles": [
               "src/styles.scss"

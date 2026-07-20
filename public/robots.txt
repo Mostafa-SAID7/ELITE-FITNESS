@@ -1,0 +1,47 @@
+# HIT Egypt - Search Engine Optimization
+# Last updated: July 2026
+
+# Default rules for all search engines
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /*.json$
+Disallow: /api/
+Disallow: /assets/private/
+
+# Specific rules for Google
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 1
+
+# Specific rules for Bing
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 1
+
+# Specific rules for Other bots
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://hitegypt.com/sitemap.xml
+Sitemap: https://www.hitegypt.com/sitemap.xml
+
+# Allow social media crawlers
+User-agent: facebookexternalhit
+Allow: /
+
+User-agent: Twitterbot
+Allow: /
+
+User-agent: LinkedInBot
+Allow: /
+
+User-agent: WhatsApp
+Allow: /
+
+User-agent: Slurp
+Allow: /
+
+User-agent: DuckDuckBot
+Allow: /
