@@ -1,89 +1,8 @@
-# Getting Started - HIT Egypt Development
+# Getting Started - Development Guide
 
-## 🚀 Quick Start (5 minutes)
+For complete installation instructions, see **[SETUP.md](./SETUP.md)**.
 
-### Prerequisites
-```bash
-# Check installed versions
-node --version    # Should be 18+
-npm --version     # Should be 10+
-```
-
-### Setup & Run
-```bash
-# 1. Clone repository
-git clone <repo-url>
-cd ELITE-FITNESS
-
-# 2. Install dependencies
-npm install
-
-# 3. Start development server
-npm start
-
-# 4. Open browser
-# Navigate to http://localhost:4200
-```
-
----
-
-## 📋 First-Time Setup (30 minutes)
-
-### Step 1: Environment Setup
-```bash
-# Node.js installation
-# Download from https://nodejs.org/ (v18 or higher)
-
-# Verify installation
-node --version
-npm --version
-```
-
-### Step 2: Clone Repository
-```bash
-git clone <repository-url>
-cd ELITE-FITNESS
-```
-
-### Step 3: Install Dependencies
-```bash
-npm install
-```
-
-This installs:
-- Angular 18+
-- Tailwind CSS
-- TypeScript
-- Testing frameworks
-- Development tools
-
-### Step 4: Environment Configuration
-```bash
-# Copy example environment
-cp src/environments/environment.example.ts src/environments/environment.ts
-
-# Edit if needed for local development
-# Most defaults work for development
-```
-
-### Step 5: Start Development Server
-```bash
-npm start
-```
-
-Expected output:
-```
-✔ Compiled successfully
-✔ Application bundle generated successfully
-→ Local:   http://localhost:4200/
-```
-
-### Step 6: Verify Installation
-Open http://localhost:4200 in your browser
-- [ ] Homepage loads
-- [ ] Navigation works
-- [ ] No console errors
-- [ ] Styling appears correct
+This guide focuses on daily development workflow and best practices.
 
 ---
 
@@ -146,33 +65,17 @@ npm run build
 
 ---
 
-## 📁 Project Structure
+## 📁 Project Structure Reference
 
+For detailed structure, see **[ARCHITECTURE.md](./ARCHITECTURE.md)**
+
+Quick reference:
 ```
-src/
-├── app/
-│   ├── core/                 # Shared services, guards, interceptors
-│   │   ├── services/        # API, Logger, SEO services
-│   │   ├── guards/          # Auth, Deactivate guards
-│   │   ├── interceptors/    # Auth, Error interceptors
-│   │   ├── models/          # Data interfaces
-│   │   └── utils/           # Error handler utilities
-│   ├── shared/              # Reusable components
-│   │   └── components/      # Header, Footer, UI components
-│   ├── features/            # Feature modules (lazy-loaded)
-│   │   ├── home/
-│   │   ├── services/
-│   │   ├── about/
-│   │   ├── contact/
-│   │   ├── testimonials/
-│   │   └── legal/
-│   ├── app.component.ts     # Root component
-│   ├── app.routes.ts        # Route configuration
-│   └── app.component.html   # Root template
-├── assets/                  # Static assets, images, favicon
-├── environments/            # Environment configs
-├── styles.scss             # Global styles
-└── main.ts                 # Application entry point
+src/app/
+├── core/        # Services, guards, interceptors
+├── shared/      # Reusable components
+├── features/    # Feature modules (home, services, about, contact)
+└── app.routes.ts  # Route configuration
 ```
 
 ---

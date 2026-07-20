@@ -1,6 +1,6 @@
-# Deployment Guide
+## Deployment Options
 
-## Netlify Deployment
+### 1. Netlify (Recommended)
 
 ### Prerequisites
 
@@ -81,31 +81,10 @@ After successful deployment, your application will be available at:
 - Production: `https://elite-fitness73.netlify.app`
 - Preview: Generated for each pull request
 
-## Docker Deployment
 
-### Build Docker Image
+For Docker deployment details, see **[DOCKER.md](./DOCKER.md)**.
 
-```bash
-docker build -t elite-fitness:latest .
-```
-
-### Run Docker Container
-
-```bash
-docker run -p 80:80 elite-fitness:latest
-```
-
-Access the application at `http://localhost`
-
-### Docker Compose
-
-```bash
-docker-compose up -d
-```
-
-See `docs/DOCKER.md` for detailed Docker instructions.
-
-## GitHub Actions CI/CD
+## 2. GitHub Actions CI/CD
 
 The project includes GitHub Actions workflows for:
 
